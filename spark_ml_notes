@@ -1,0 +1,1 @@
+naive bayes: only support Bernouli and Multinomial which need to convert discrete data into TF-IDF vectors
