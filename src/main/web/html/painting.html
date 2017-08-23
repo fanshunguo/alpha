@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="drawing" width="19" height="19">drawing something</canvas>
+<script>
+    var draw = document.getElementById("drawing");
+    var context = draw.getContext("2d");
+    context.beginPath();
+    context.moveTo(9, 18);
+    context.lineTo(9, 0);
+    context.moveTo(0, 9);
+    context.lineTo(18, 9);
+//    context.strokeStyle = "rgba(0, 0, 255, 0.5)";
+    context.strokeStyle = "black";
+    context.stroke();
+//    var img = draw.toDataURL();
+
+    var MIME_TYPE = "image/png";
+    var imgURL = draw.toDataURL(MIME_TYPE);
+    var dlLink = document.createElement('a');
+    dlLink.download = "add.png";
+    dlLink.href = imgURL;
+    dlLink.dataset.downloadurl = [MIME_TYPE, dlLink.download, dlLink.href].join(':');
+    document.body.appendChild(dlLink);
+    dlLink.click();
+    document.body.removeChild(dlLink);
+</script>
+</body>
+</html>

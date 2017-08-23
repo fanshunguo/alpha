@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Persion</title>
+</head>
+<body>
+<p>点击下方按钮，循环遍历对象“person”的属性</p>
+<button onclick="myFunction2()">点击这里</button>
+<p id="demo"></p>
+<div>plain a point</div>
+<script type="text/javascript" src="../js/person.js"></script>
+<script type="text/javascript" src="../js/draw.js"></script>
+<script>
+    function myFunction() {
+        var x;
+        var txt = "";
+        var person1 = new persion("Bill", "Gates", 56);
+        person1.changeName("Peter");
+        for (x in person1) {
+            if (typeof(person1[x]) === "string" || typeof(person1[x]) === "number") {
+                txt = txt + person1[x]
+            }
+        }
+        document.getElementById("demo").innerHTML = txt
+    }
+
+    function myFunction2() {
+        var point = new Opts();
+        drawPoint(point);
+    }
+    myFunction2();
+    drawPoint({
+        pw: 2,
+        ph: 2,
+        color: "DarkRed",
+        point: [100, 150]
+    });
+    drawPoint({
+        pw: 2,
+        ph: 2,
+        color: "DarkRed",
+        point: [100, 160]
+    });
+    for(var x = 50; x<300; x+=30){
+        for(var y = 50; y<300; y+=30){
+            drawPoint({
+                pw:2,ph:2,color:'DarkRed',point: [x,y]
+            });
+        }
+    }
+</script>
+</body>
+</html>
