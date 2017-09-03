@@ -62,7 +62,7 @@ object CtdmConf {
     def apply(key: String, dflt: Long): Entry = Entry(key, dflt: JLong)
   }
 
-  val SERVER_HOST = Entry("livy.server.host", "0.0.0.0")
-  val SERVER_PORT = Entry("livy.server.port", 6066)
+  val SERVER_HOST = Entry("ctdm.server.host", "0.0.0.0")
+  val SERVER_PORT = Entry("ctdm.server.port", 9099)
 
 }
