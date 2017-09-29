@@ -64,5 +64,7 @@ object CtdmConf {
 
   val SERVER_HOST = Entry("ctdm.server.host", "0.0.0.0")
   val SERVER_PORT = Entry("ctdm.server.port", 9099)
+  val WEB_APP_CONTEXT_PATH = Entry("ctdm.web.app.context.path", "/web")
+  val WEB_APP_WAR_PATH = Entry("ctdm.web.app.war.path", "/home/fan/workspace/demos/alpha/webapp/target/webapp-1.0-SNAPSHOT.war")
 
 }

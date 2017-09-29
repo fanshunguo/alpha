@@ -28,14 +28,28 @@
                 <configuration>
                     <thriftExecutable>thrift</thriftExecutable>
                     <thriftSourceRoot>${basedir}/src/main/thrift</thriftSourceRoot>
-                    <outputDirectory>${basedir}/src/main/thrift-gen</outputDirectory>
+                    <!--<outputDirectory>${basedir}/src/main/thrift-gen</outputDirectory>-->
                 </configuration>
                 <executions>
                     <execution>
+                        <id>thrift-java-sources</id>
                         <configuration>
                             <generator>java:beans</generator>
+                            <outputDirectory>${basedir}/src/main/thrift-gen</outputDirectory>
                         </configuration>
                         <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>thrift-ts-generation</id>
+                        <configuration>
+                            <generator>js:ts</generator>
+                            <outputDirectory>
+                                ${basedir}/../webapp/src/main/app/thrift-gen
+                            </outputDirectory>
+                        </configuration>
                         <goals>
                             <goal>compile</goal>
                         </goals>
