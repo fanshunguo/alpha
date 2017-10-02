@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Ctdm System</title>
+    <script type="text/typescript" src="thrift-gen/AdditionService.d.ts"></script>
+    <script type="text/javascript" src="thrift-gen/AdditionService.js"></script>
+    <script type="text/javascript" src="lib/thrift.js"></script>
 </head>
 <body>
-<p>Hello Ctdm</p>
+<form name="form1">
+    first element:<input type="text" name="add1" value="100" title=""/>
+</form>
+<form name="form2">
+    second element:<input type="text" name="add2" value="100" title=""/>
+</form>
+<p id="result">Hello Ctdm</p>
+<button onclick="add2()">Result</button>
+<!--<script>-->
+    <!--add(12, 88);-->
+<!--</script>-->
+<script>
+    function add(x1, x2) {
+        var transport = new Thrift.Transport("http://localhost:9099/thrift/all");
+        var protocol = new Thrift.Protocol(transport);
+        var client = new AdditionServiceClient(protocol);
+        var result_Sum = client.add(x1, x2);
+        var txt = result_Sum.toString();
+//        document.write(x1 + " add " + x2);
+        document.getElementById("result").innerHTML = "result: " + txt;
+    }
+    function add2() {
+        var x1 = document.forms.item(0).add1.value;
+        var x2 = document.forms.item(1).add2.value;
+//        document.write(x1);
+//        document.write(x2);
+        add(x1, x2);
+    }
+</script>
 </body>
 </html>
