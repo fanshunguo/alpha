@@ -1,0 +1,6 @@
+@import './../themes/light/index.scss';
+.sidebar {
+  &[data-color="violet"]:after {
+    @include line-gradient($color-purple, rgba($purple-color-bottom, .7));
+  }
+}

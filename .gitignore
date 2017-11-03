@@ -2,6 +2,7 @@
 
 # web dependency
 node_modules/
+samples/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

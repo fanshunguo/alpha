@@ -19,6 +19,7 @@ class JettyServer(conf: CtdmConf) extends Logging {
   private def usedHandlers = {
     Array(CtdmWebServer.getInstance(conf),
       ThriftServer.getInstance(conf),
+      VueWebServer.getInstance(conf),
       new DefaultHandler)
   }
 
