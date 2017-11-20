@@ -7,7 +7,7 @@
          v-show="isMenu || !isSubMenu">
         <i v-if="icon" :class="icon"></i>
         <p>
-          {{title}}
+          <strong>{{title}}</strong>
           <chevron-down-icon width="16" height="16" v-if="isMenu" class="menu-icon" :class="{down: toggle}"></chevron-down-icon>
         </p>
       </a>

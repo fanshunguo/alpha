@@ -3,20 +3,20 @@
     <vue-side-bar :minimize="minimized"
                   position="left"
                   ref="sidebar">
-      <sidebar-item title="Search links"
+      <sidebar-item title="用户查找"
                     icon="ti-search">
         <sidebar-item to="/base_search" title="Base Search link"></sidebar-item>
         <sidebar-item to="page2" title="Second link"/>
         <sidebar-item to="/" title="Third link" />
       </sidebar-item>
 
-      <sidebar-item title="Menu with links"
+      <sidebar-item title="效果反馈"
                     icon="ti-hand-point-up">
         <sidebar-item to="/" title="First link"/>
         <sidebar-item to="page2" title="Second link"/>
         <sidebar-item to="/" title="Third link" />
       </sidebar-item>
-      <sidebar-item title="Menu with links"
+      <sidebar-item title="权限管理"
                     icon="ti-lock">
         <sidebar-item to="/" title="First link"/>
         <sidebar-item to="page2" title="Second link"></sidebar-item>
