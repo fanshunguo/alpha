@@ -2,6 +2,7 @@ import VueSideBar from './components/VueSideBar.vue'
 import SidebarItem from './components/SidebarItem.vue'
 import SideBarMainContent from './components/SidebarMainContent.vue'
 import Loading from './components/Loading.vue'
+import CollapsiblePanel from './components/CollapsiblePanel.vue'
 
 const SideBar = {
   install (Vue) {
@@ -9,6 +10,7 @@ const SideBar = {
     Vue.component('sidebar-item', SidebarItem)
     Vue.component('sidebar-main-content', SideBarMainContent)
     Vue.component('loading', Loading)
+    Vue.component('collapse', CollapsiblePanel)
   }
 }
 

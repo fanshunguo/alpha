@@ -13,6 +13,15 @@
     <!--<label><input type="radio" v-model="advance.field" value="cert_num"/>证件号码</label>-->
     <br/>
     <br/>
+    <collapse>
+      <span class="input-title">性别：</span>
+      <input class="sub-input" type="text" v-model="advance.map.gender[0]"/>
+      <span class="input-title">证件地址：</span>
+      <input class="sub-input" type="text" v-model="advance.map.cert_addr_txt[0]"/>
+      <span class="input-title">通信地址：</span>
+      <input class="sub-input" type="text" v-model="advance.map.contact_addr_txt[0]"/>
+    </collapse>
+    <br/>
     <div v-if="loading"><loading></loading></div>
     <div v-if="!loading">
       <textarea>{{ response.hits }}</textarea>
@@ -81,7 +90,10 @@
           map: {
             cust_name: [],
             ct_msisdn: [],
-            cert_num: []
+            cert_num: [],
+            gender: [],
+            cert_addr_txt: [],
+            contact_addr_txt: []
           }
         },
         response: {
