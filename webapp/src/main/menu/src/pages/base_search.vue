@@ -22,7 +22,7 @@
       <input class="sub-input" type="text" v-model="advance.map.contact_addr_txt[0]"/>
     </collapse>
     <br/>
-    <div v-if="loading"><loading></loading></div>
+    <div v-if="loading"><loading :loading="loading"></loading></div>
     <div v-if="!loading">
       <textarea>{{ response.hits }}</textarea>
       <table>

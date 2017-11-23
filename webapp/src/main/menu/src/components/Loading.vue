@@ -12,15 +12,14 @@
 
 <script>
   export default {
+    props: ['loading', 'resultCode'],
     data () {
       return {
-        loading: true,
-        resultCode: '200'
+        resultCode: '300'
       }
     },
     mounted () {
-      this.loading = true
-      this.resultCode = '200'
+      this.resultCode = '300'
     }
   }
 </script>
