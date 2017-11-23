@@ -1,12 +1,14 @@
 import VueSideBar from './components/VueSideBar.vue'
 import SidebarItem from './components/SidebarItem.vue'
 import SideBarMainContent from './components/SidebarMainContent.vue'
+import Loading from './components/Loading.vue'
 
 const SideBar = {
   install (Vue) {
     Vue.component('vue-side-bar', VueSideBar)
     Vue.component('sidebar-item', SidebarItem)
     Vue.component('sidebar-main-content', SideBarMainContent)
+    Vue.component('loading', Loading)
   }
 }
 

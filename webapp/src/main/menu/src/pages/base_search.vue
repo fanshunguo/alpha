@@ -1,37 +1,46 @@
 <template>
-  <div style="float:right;">
-    <input type="text" v-model="id" placeholder="点击搜索按钮筛选"/>
-    <button @click="sendData()">搜索</button>
+  <div style="float:left;">
+    <form class="main-form">
+      <input class="main-input" type="text" v-model="advance.map.ct_msisdn[0]" placeholder="输入手机号"/>
+      <button class="main-button" style="margin-top: 2px;" @click="sendData()">搜索</button>
+    </form>
     <br/>
-    <label><input type="radio" v-model="advance.field" value="cust_name" checked="checked"/>用户名称</label>
-    <label><input type="radio" v-model="advance.field" value="cert_num"/>证件号码</label>
+    <span class="input-title">用户名称：</span>
+    <input class="sub-input" type="text" v-model="advance.map.cust_name[0]"/>
+    <span class="input-title" style="margin-left: 15px">证件号码：</span>
+    <input class="sub-input" type="text" v-model="advance.map.cert_num[0]"/>
+    <!--<label><input type="radio" v-model="advance.field" value="cust_name" checked="checked"/>用户名称</label>-->
+    <!--<label><input type="radio" v-model="advance.field" value="cert_num"/>证件号码</label>-->
     <br/>
     <br/>
-    <textarea>{{ response.hits }}</textarea>
-    <table>
-      <thead>
-      <tr>
-        <th style='width:3%; text-align: left' v-show="false">ID</th>
-        <th style='width:10%; text-align: left'>客户名称</th>
-        <th style='width:10%; text-align: left'>证件号</th>
-        <th style='width:10%; text-align: left'>联系地址</th>
-        <th style='width:10%; text-align: left'>证件地址</th>
-        <th style='width:10%; text-align: left'>详细信息</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="person in response.hits.hits">
-        <td v-show="false">{{person._source.cust_id}}</td>
-        <td>{{person._source.cust_name}}</td>
-        <td>{{person._source.cert_num}}</td>
-        <td>{{person._source.contact_addr_txt}}</td>
-        <td>{{person._source.cert_addr_txt}}</td>
-        <td>
-          <a href="#" v-on:click="details(person._source)">详细信息</a>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+    <div v-if="loading"><loading></loading></div>
+    <div v-if="!loading">
+      <textarea>{{ response.hits }}</textarea>
+      <table>
+        <thead>
+        <tr>
+          <th style='width:3%; text-align: left' v-show="false">ID</th>
+          <th style='width:10%; text-align: left'>客户名称</th>
+          <th style='width:10%; text-align: left'>证件号</th>
+          <th style='width:10%; text-align: left'>联系地址</th>
+          <th style='width:10%; text-align: left'>证件地址</th>
+          <th style='width:10%; text-align: left'>详细信息</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="person in response.hits.hits">
+          <td v-show="false">{{person._source.cust_id}}</td>
+          <td>{{person._source.cust_name}}</td>
+          <td>{{person._source.cert_num}}</td>
+          <td>{{person._source.contact_addr_txt}}</td>
+          <td>{{person._source.cert_addr_txt}}</td>
+          <td>
+            <a href="#" v-on:click="details(person._source)">详细信息</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
     <br/>
     <br/>
     <h4>固网账号</h4>
@@ -67,14 +76,13 @@
       return {
         ip: 'localhost',
         port: '8999',
-        input: {
-          fn: '',
-          ln: ''
-        },
-        id: '',
+        loading: false,
         advance: {
-          field: 'cust_name',
-          map: {}
+          map: {
+            cust_name: [],
+            ct_msisdn: [],
+            cert_num: []
+          }
         },
         response: {
           took: '',
@@ -108,20 +116,22 @@
     },
     methods: {
       sendData () {
+        this.loading = true
         axios({
           method: 'POST',
           url: 'http://' + this.ip + ':' + this.port + '/business/identity/baseInfo',
           headers: {'content-type': 'application/json;charset=UTF-8'},
-          params: {'id': this.id},
           data: this.advance
         }).then(result => {
           this.response = result.data
+          this.loading = false
         }, error => {
           console.error(error)
         })
       },
 
-      details () {}
+      details () {
+      }
     }
   }
 </script>
@@ -130,5 +140,45 @@
   textarea {
     width: 600px;
     height: 200px;
+  }
+
+  form.main-form {
+    width: 600px;
+    height: 30px;
+  }
+
+  .main-input {
+    width: 350px;
+    height: 20px;
+  }
+
+  .main-button {
+    background-color: black;
+    border: none;
+    color: white;
+    width: 90px;
+    height: 26px;
+    /*padding: 15px 32px;*/
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .main-button:hover {
+    background-color: gray;
+    color: white;
+  }
+
+  .sub-input {
+    width: 100px;
+    height: 15px;
+  }
+
+  .input-title {
+    font-size: 12px;
   }
 </style>
