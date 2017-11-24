@@ -3,6 +3,8 @@ import SidebarItem from './components/SidebarItem.vue'
 import SideBarMainContent from './components/SidebarMainContent.vue'
 import Loading from './components/Loading.vue'
 import CollapsiblePanel from './components/CollapsiblePanel.vue'
+import MainSearch from './components/MainSearch.vue'
+import AccountPanel from './components/AccountInfoPanel.vue'
 
 const SideBar = {
   install (Vue) {
@@ -11,6 +13,8 @@ const SideBar = {
     Vue.component('sidebar-main-content', SideBarMainContent)
     Vue.component('loading', Loading)
     Vue.component('collapse', CollapsiblePanel)
+    Vue.component('main-search', MainSearch)
+    Vue.component('account-panel', AccountPanel)
   }
 }
 

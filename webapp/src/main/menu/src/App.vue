@@ -32,10 +32,10 @@
     </vue-side-bar>
     <div class="main-panel">
 
-      <div>
-        <button class="btn" style="float:right;" @click="toggleSideBar">Minimize on desktop</button>
+      <!--<div>-->
+        <!--<button class="btn" style="float:right;" @click="toggleSideBar">Minimize on desktop</button>-->
         <!--<button class="btn" style="float:right;" @click="openMobileMenu">Open mobile menu</button>-->
-      </div>
+      <!--</div>-->
       <router-view>
       </router-view>
     </div>

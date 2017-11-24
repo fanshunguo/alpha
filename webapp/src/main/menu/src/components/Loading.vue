@@ -12,15 +12,7 @@
 
 <script>
   export default {
-    props: ['loading', 'resultCode'],
-    data () {
-      return {
-        resultCode: '300'
-      }
-    },
-    mounted () {
-      this.resultCode = '300'
-    }
+    props: ['loading', 'resultCode']
   }
 </script>
 

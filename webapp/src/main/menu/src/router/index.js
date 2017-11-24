@@ -8,7 +8,10 @@ const routes = [
   {
     path: '/base_search',
     name: 'base_search',
-    component: baseSearch
+    component: baseSearch,
+    meta: {
+      keepAlive: true
+    }
   },
   {
     path: '/',

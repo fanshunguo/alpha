@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="collapse-button" type="button" @click="open=!open">{{ open ? '收起搜索条件' : '更多搜索条件' }}</button>
+    <button :class="buttonClass" type="button" @click="open=!open">{{ open ? closeTitle : openTitle }}</button>
     <div v-show="open">
       <slot></slot>
     </div>
@@ -9,6 +9,13 @@
 
 <script>
   export default {
+    props: {
+      closeTitle: String,
+      openTitle: String,
+      buttonClass: {
+        type: String,
+        default: 'collapse-button'
+      }},
     data () {
       return {
         open: false
