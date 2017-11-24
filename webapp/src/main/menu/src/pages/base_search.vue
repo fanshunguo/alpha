@@ -85,7 +85,12 @@
         </table>
     </account-panel>
     <br/>
-    <account-panel :buttonClass="'account-info-button'" :openTitle="'展开本网手机号详情'" :closeTitle="'收起本网手机号详情'">
+    <account-panel :buttonClass="'account-info-button'"
+                   :openTitle="'展开本网手机号详情'"
+                   :closeTitle="'收起本网手机号详情'"
+                   :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
+                   :accountName="'ct_mobile_phone'"
+                   :request_body="baseInfo">
     </account-panel>
       <!--</route-view>-->
   </div>

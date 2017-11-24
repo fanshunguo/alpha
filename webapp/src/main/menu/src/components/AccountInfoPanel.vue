@@ -94,6 +94,7 @@
       },
 
       remoteAccount () {
+        console.log(this.address)
         axios({
           method: 'POST',
           url: this.address,
@@ -109,11 +110,13 @@
       },
 
       parseData () {
-        this.open = !this.open
-        this.loading = true
-        this.accHeads = this.getAccount(this.accountName)
-        this.remoteAccount()
-        this.loading = false
+        if ('global_id' in this.request_body) {
+          this.open = !this.open
+          this.loading = true
+          this.accHeads = this.getAccount(this.accountName)
+          this.remoteAccount()
+          this.loading = false
+        }
       }
     }
   }
