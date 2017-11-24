@@ -90,7 +90,8 @@
                    :closeTitle="'收起本网手机号详情'"
                    :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
                    :accountName="'ct_mobile_phone'"
-                   :request_body="baseInfo">
+                   :request_body="baseInfo"
+                   :allOpen="allPanelOpen">
     </account-panel>
       <!--</route-view>-->
   </div>
@@ -136,7 +137,8 @@
             hits: []
           }
         },
-        baseInfo: {}
+        baseInfo: {},
+        allPanelOpen: false
       }
     },
     mounted () {
@@ -165,6 +167,7 @@
 
       details (source) {
         this.baseInfo = source
+        this.allPanelOpen = false
         console.log(this.baseInfo)
       }
     }

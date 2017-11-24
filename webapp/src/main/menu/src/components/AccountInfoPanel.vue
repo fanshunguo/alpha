@@ -35,6 +35,7 @@
 
   export default {
     props: {
+      open: false,
       address: {
         type: String,
         default: 'http://localhost:8999/business/identity/account'
@@ -58,7 +59,6 @@
     data () {
       return {
         loading: Boolean,
-        open: false,
         accounts: {
           broadband: [
             new Field('global_id', 'ID', false),
