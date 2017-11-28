@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button :class="buttonClass" type="button" @click="parseData"><u>{{ (open && !allClose) ? closeTitle : openTitle }}</u></button>
+    <button :class="buttonClass" type="button" @click="parseData"><u>{{ open ? closeTitle : openTitle }}</u></button>
     <div v-show="open">
       <div v-if="loading">
         <loading :loading="loading"></loading>
@@ -35,7 +35,6 @@
 
   export default {
     props: {
-      allClose: true,
       open: false,
       address: {
         type: String,

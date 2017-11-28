@@ -45,7 +45,7 @@
                      :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
                      :accountName="'broadband'"
                      :request_body="baseInfo._source"
-                     :allClose="allPanelClose">
+                     :open="!allPanelClose">
       </account-panel>
       <br/>
       <account-panel :buttonClass="'account-info-button'"
@@ -54,7 +54,7 @@
                      :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
                      :accountName="'ct_mobile_phone'"
                      :request_body="baseInfo._source"
-                     :allClose="allPanelClose">
+                     :open="!allPanelClose">
       </account-panel>
       <br/>
       <account-panel :buttonClass="'account-info-button'"
@@ -63,7 +63,7 @@
                      :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
                      :accountName="'device_info'"
                      :request_body="baseInfo._source"
-                     :allClose="allPanelClose">
+                     :open="!allPanelClose">
       </account-panel>
     </account-detail>
         <!--<div id="accountDetail"></div><h4>账号详情</h4>-->
@@ -146,7 +146,8 @@
       details (source) {
         this.baseInfo = source
         this.allPanelClose = true
-        console.log(this.baseInfo)
+        console.log(this.allPanelClose)
+//        console.log(this.baseInfo)
         this.showDetail = true
 //        const anchor = this.$refs.accountDetail
 //        $('#baseSearch').animate({scrollTop: 400})
