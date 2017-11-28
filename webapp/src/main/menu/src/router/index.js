@@ -3,6 +3,7 @@ import Page1 from '../pages/Page1.vue'
 import Page2 from '../pages/Page2.vue'
 import Page4 from '../pages/Page4.vue'
 import baseSearch from '../pages/base_search.vue'
+import accountDetail from '../components/AccountDetail.vue'
 
 const routes = [
   {
@@ -27,6 +28,11 @@ const routes = [
     path: '/page4',
     name: 'page4',
     component: Page4
+  },
+  {
+    path: '/accountDetail',
+    name: 'accountDetail',
+    component: accountDetail
   }
 ]
 

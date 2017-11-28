@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button :class="buttonClass" type="button" @click="parseData"><u>{{ open ? closeTitle : openTitle }}</u></button>
+    <button :class="buttonClass" type="button" @click="parseData"><u>{{ (open && !allClose) ? closeTitle : openTitle }}</u></button>
     <div v-show="open">
       <div v-if="loading">
         <loading :loading="loading"></loading>
@@ -35,6 +35,7 @@
 
   export default {
     props: {
+      allClose: true,
       open: false,
       address: {
         type: String,
@@ -63,12 +64,34 @@
           broadband: [
             new Field('global_id', 'ID', false),
             new Field('prod_name', '产品名称', true),
-            new Field('acc_num', '业务号码', true)
+            new Field('acc_num', '业务号码', true),
+            new Field('status_name', '使用状态', true),
+            new Field('begin_rent_date', '起租时间', false),
+            new Field('act_date', '激活时间', true),
+            new Field('use_cust_id', '客户编号', false),
+            new Field('payment_mode_name', '付费方式', false),
+            new Field('stop_rent_date', '到期时间', true)
           ],
           ct_mobile_phone: [
             new Field('global_id', 'ID', false),
             new Field('prod_name', '产品名称', true),
-            new Field('acc_num', '手机号码', true)
+            new Field('acc_num', '手机号码', true),
+            new Field('status_name', '使用状态', true),
+            new Field('begin_rent_date', '起租时间', false),
+            new Field('act_date', '激活时间', true),
+            new Field('cust_id', '客户编号', false),
+            new Field('payment_mode_name', '付费方式', false),
+            new Field('strop_rent_date', '到期时间', true)
+          ],
+          device_info: [
+            new Field('global_id', 'ID', false),
+            new Field('intelligent_system', '操作系统', true),
+            new Field('prod_software', 'UI', false),
+            new Field('pro_brand', '手机品牌', true),
+            new Field('term_model', '手机型号', true),
+            new Field('market_price', '市场价', true),
+            new Field('phone_no', '手机号', true),
+            new Field('cust_id', '客户编号', false)
           ]
         },
         accHeads: [],
@@ -110,6 +133,7 @@
       },
 
       parseData () {
+//        console.log(this.request_body)
         if ('global_id' in this.request_body) {
           this.open = !this.open
           this.loading = true

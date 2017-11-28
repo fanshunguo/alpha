@@ -5,6 +5,9 @@ import Loading from './components/Loading.vue'
 import CollapsiblePanel from './components/CollapsiblePanel.vue'
 import MainSearch from './components/MainSearch.vue'
 import AccountPanel from './components/AccountInfoPanel.vue'
+import BaseInfo from './components/BaseInfo.vue'
+import TableOperation from './components/TableOperation.vue'
+import AccountDetail from './components/AccountDetail.vue'
 
 const SideBar = {
   install (Vue) {
@@ -15,6 +18,9 @@ const SideBar = {
     Vue.component('collapse', CollapsiblePanel)
     Vue.component('main-search', MainSearch)
     Vue.component('account-panel', AccountPanel)
+    Vue.component('base-info', BaseInfo)
+    Vue.component('table-operation', TableOperation)
+    Vue.component('account-detail', AccountDetail)
   }
 }
 

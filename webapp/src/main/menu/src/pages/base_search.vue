@@ -1,5 +1,5 @@
 <template>
-  <div style="float:left;">
+  <div id="baseSearch" style="float:left; width: 100%">
     <!--<keep-alive>-->
       <!--<route-view v-if="$route.meta.keepAlive">-->
       <!--<main-search>-->
@@ -33,72 +33,47 @@
           <loading :loading="loading"></loading>
         </div>
         <div v-if="!loading">
-          <textarea>{{ response.hits }}</textarea>
-          <table>
-            <thead>
-            <tr>
-              <th style='width:3%; text-align: left' v-show="false">ID</th>
-              <th style='width:10%; text-align: left'>客户名称</th>
-              <th style='width:10%; text-align: left'>证件号</th>
-              <th style='width:10%; text-align: left'>联系地址</th>
-              <th style='width:10%; text-align: left'>证件地址</th>
-              <th style='width:10%; text-align: left'>详细信息</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="person in response.hits.hits">
-              <td v-show="false">{{person._source.cust_id}}</td>
-              <td>{{person._source.cust_name}}</td>
-              <td>{{person._source.cert_num}}</td>
-              <td>{{person._source.contact_addr_txt}}</td>
-              <td>{{person._source.cert_addr_txt}}</td>
-              <td>
-                <a href="#account-detail" v-on:click="details(person._source)">详细信息</a>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+          <!--<textarea>{{ response.hits }}</textarea>-->
+          <base-info v-on:detail-info="details" :tableData="response.hits.hits"></base-info>
         </div>
         <br/>
         <br/>
-        <p id="account-detail"></p><h4>账号详情</h4>
-    <account-panel :buttonClass="'account-info-button'" :openTitle="'固网账号详情'" :closeTitle="'固网账号详情'">
-        <table>
-          <thead>
-          <tr>
-            <th style='width:3%; text-align: left' v-show="false">ID</th>
-            <th style='width:10%; text-align: left'>产品名称</th>
-            <th style='width:10%; text-align: left'>业务号码</th>
-            <th style='width:10%; text-align: left'>账号</th>
-            <th style='width:10%; text-align: left'>付费模式</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="acc in account.hits.hits">
-            <td v-show="false">{{acc._source.use_cust_id}}</td>
-            <td>{{acc._source.prod_name}}</td>
-            <td>{{acc._source.acc_num}}</td>
-            <td>{{acc._source.account}}</td>
-            <td>{{acc._source.payment_mode_cd}}</td>
-          </tr>
-          </tbody>
-        </table>
-    </account-panel>
-    <br/>
-    <account-panel :buttonClass="'account-info-button'"
-                   :openTitle="'展开本网手机号详情'"
-                   :closeTitle="'收起本网手机号详情'"
-                   :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
-                   :accountName="'ct_mobile_phone'"
-                   :request_body="baseInfo"
-                   :allOpen="allPanelOpen">
-    </account-panel>
+    <account-detail v-show="showDetail" :id="'accountDetail'">
+      <account-panel :buttonClass="'account-info-button'"
+                     :openTitle="'固网账号详情'"
+                     :closeTitle="'固网账号详情'"
+                     :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
+                     :accountName="'broadband'"
+                     :request_body="baseInfo._source"
+                     :allClose="allPanelClose">
+      </account-panel>
+      <br/>
+      <account-panel :buttonClass="'account-info-button'"
+                     :openTitle="'本网手机号详情'"
+                     :closeTitle="'本网手机号详情'"
+                     :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
+                     :accountName="'ct_mobile_phone'"
+                     :request_body="baseInfo._source"
+                     :allClose="allPanelClose">
+      </account-panel>
+      <br/>
+      <account-panel :buttonClass="'account-info-button'"
+                     :openTitle="'设备信息'"
+                     :closeTitle="'设备信息'"
+                     :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
+                     :accountName="'device_info'"
+                     :request_body="baseInfo._source"
+                     :allClose="allPanelClose">
+      </account-panel>
+    </account-detail>
+        <!--<div id="accountDetail"></div><h4>账号详情</h4>-->
       <!--</route-view>-->
   </div>
 </template>
 
 <script>
   import axios from 'axios'
+//  import $ from 'jquery'
 
   export default {
     name: 'BaseSearch',
@@ -107,6 +82,7 @@
         ip: 'localhost',
         port: '8999',
         loading: false,
+        showDetail: false,
         advance: {
           map: {
             cust_name: [],
@@ -138,7 +114,7 @@
           }
         },
         baseInfo: {},
-        allPanelOpen: false
+        allPanelClose: true
       }
     },
     mounted () {
@@ -152,6 +128,7 @@
     methods: {
       sendData () {
         this.loading = true
+        this.showDetail = false
         axios({
           method: 'POST',
           url: 'http://' + this.ip + ':' + this.port + '/business/identity/baseInfo',
@@ -159,6 +136,7 @@
           data: this.advance
         }).then(result => {
           this.response = result.data
+          console.log(this.response)
           this.loading = false
         }, error => {
           console.error(error)
@@ -167,8 +145,13 @@
 
       details (source) {
         this.baseInfo = source
-        this.allPanelOpen = false
+        this.allPanelClose = true
         console.log(this.baseInfo)
+        this.showDetail = true
+//        const anchor = this.$refs.accountDetail
+//        $('#baseSearch').animate({scrollTop: 400})
+//        this.scrollHeight = 400
+//        console.log(document.getElementById('accountDetail').scrollHeight)
       }
     }
   }
