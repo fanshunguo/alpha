@@ -79,7 +79,8 @@
     name: 'BaseSearch',
     data () {
       return {
-        ip: 'localhost',
+        ip: '172.18.167.2',
+//        ip: '10.142.97.123:',
         port: '8999',
         loading: false,
         showDetail: false,
