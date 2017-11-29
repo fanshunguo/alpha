@@ -231,11 +231,12 @@
   }
 
   .account-info-button {
-    margin-left: 0px;
+    width: 100%;
+    margin-left: 2px;
+    margin-right: 2px;
     background-color: black;
     border: none;
     color: blanchedalmond;
-    width: 500px;
     height: 20px;
     /*padding: 15px 32px;*/
     text-align: center;
