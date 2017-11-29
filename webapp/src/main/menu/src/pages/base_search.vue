@@ -65,6 +65,24 @@
                      :request_body="baseInfo._source"
                      :open="!allPanelClose">
       </account-panel>
+      <br/>
+      <account-panel :buttonClass="'account-info-button'"
+                     :openTitle="'固话信息'"
+                     :closeTitle="'固话信息'"
+                     :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
+                     :accountName="'telephone'"
+                     :request_body="baseInfo._source"
+                     :open="!allPanelClose">
+      </account-panel>
+      <br/>
+      <account-panel :buttonClass="'account-info-button'"
+                     :openTitle="'翼支付信息'"
+                     :closeTitle="'翼支付信息'"
+                     :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
+                     :accountName="'yi_pay'"
+                     :request_body="baseInfo._source"
+                     :open="!allPanelClose">
+      </account-panel>
     </account-detail>
         <!--<div id="accountDetail"></div><h4>账号详情</h4>-->
       <!--</route-view>-->
@@ -79,8 +97,8 @@
     name: 'BaseSearch',
     data () {
       return {
-        ip: '172.18.167.2',
-//        ip: '10.142.97.123:',
+//        ip: '172.18.167.2',
+        ip: '10.142.97.123',
         port: '8999',
         loading: false,
         showDetail: false,

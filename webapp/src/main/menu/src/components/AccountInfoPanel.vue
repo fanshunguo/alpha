@@ -91,6 +91,38 @@
             new Field('market_price', '市场价', true),
             new Field('phone_no', '手机号', true),
             new Field('cust_id', '客户编号', false)
+          ],
+          telephone: [
+            new Field('global_id', 'ID', false),
+            new Field('use_cust_id', '客户编号', false),
+            new Field('prod_name', '产品名称', true),
+            new Field('telephone_num', '固话号码', true),
+            new Field('status_name', '状态', true),
+            new Field('prov_id', '省份编码', false),
+            new Field('act_date', '激活时间', true),
+            new Field('stop_rent_date', '到期时间', false),
+            new Field('begin_rent_date', '起租时间', false),
+            new Field('status_date', '状态时间', false),
+            new Field('prod_inst_id', '产品编号', false),
+            new Field('payment_mode_name', '付费方式', false)
+          ],
+          yi_pay: [
+            new Field('global_id', 'ID', false),
+            new Field('pay_login', '翼支付账号', true),
+            new Field('operator_name', '用户姓名', true),
+            new Field('customer_type_name', '客户类型', true),
+            new Field('contract_no', '合同号', false),
+            new Field('operator_lvl', '操作等级', false),
+            new Field('customer_no', '客户编码', false),
+            new Field('operator_lvl_name', '用户等级', true),
+            new Field('etl_time', 'ETL时间', false),
+            new Field('is_realname_flag', '是否实名标记', false),
+            new Field('customer_type', 'customer_type', false),
+            new Field('created_at', '创建时间', true),
+            new Field('is_realname_flag_name', '是否实名', true),
+            new Field('updated_at', '更新日期', false),
+            new Field('auth_time', '验证时间', false),
+            new Field('operator_no', '操作号', false)
           ]
         },
         accHeads: [],
