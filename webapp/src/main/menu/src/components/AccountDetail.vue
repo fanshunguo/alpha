@@ -1,7 +1,7 @@
 <template>
   <div id="account-detail">
-    <fieldset class="detail_title" style="size: 1px">
-      <legend>账号详情</legend>
+    <fieldset style="size: 1px; font-size: 14px">
+      <legend class="detail_title">账号详情</legend>
       <slot></slot>
     </fieldset>
   </div>
