@@ -97,8 +97,7 @@
     name: 'BaseSearch',
     data () {
       return {
-//        ip: '172.18.167.2',
-        ip: '10.142.97.123',
+        ip: process.env.SERVICE_IP,
         port: '8999',
         loading: false,
         showDetail: false,
@@ -137,6 +136,7 @@
       }
     },
     mounted () {
+//      this.ip = process.env.SERVICE_IP
 //      axios({ method: 'GET', 'url': 'https://httpbin.org/ip' }).then(result => {
 //        this.ip = result.data.origin
 //        console.info(this.ip)
