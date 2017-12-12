@@ -4,6 +4,7 @@ import Page2 from '../pages/Page2.vue'
 import Page4 from '../pages/Page4.vue'
 import baseSearch from '../pages/base_search.vue'
 import accountDetail from '../components/AccountDetail.vue'
+import login from '../pages/login.vue'
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
     path: '/accountDetail',
     name: 'accountDetail',
     component: accountDetail
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login
   }
 ]
 

@@ -5,7 +5,7 @@
       <!--<main-search>-->
         <form class="main-form">
           <input class="main-input" type="text" v-model="advance.map.ct_msisdn[0]" placeholder="输入手机号"/>
-          <button class="main-button" style="margin-top: 2px;" @click="sendData()">搜索</button>
+          <button type="button" id="search-button" class="main-button" style="margin-top: 2px;" @click="sendData()">搜索</button>
         </form>
         <br/>
         <span class="input-title">用户名称：</span>
@@ -33,7 +33,7 @@
           <loading :loading="loading"></loading>
         </div>
         <div v-if="!loading">
-          <!--<textarea>{{ response.hits }}</textarea>-->
+          <!--<textarea>{{ response }}</textarea>-->
           <base-info v-on:detail-info="details" :tableData="response.hits.hits"></base-info>
         </div>
         <br/>
@@ -91,6 +91,7 @@
 
 <script>
   import axios from 'axios'
+//  import VueWebSocket from 'vue-websocket'
 //  import $ from 'jquery'
 
   export default {
@@ -136,13 +137,6 @@
       }
     },
     mounted () {
-//      this.ip = process.env.SERVICE_IP
-//      axios({ method: 'GET', 'url': 'https://httpbin.org/ip' }).then(result => {
-//        this.ip = result.data.origin
-//        console.info(this.ip)
-//      }, error => {
-//        console.error(error)
-//      })
     },
     methods: {
       sendData () {
@@ -154,9 +148,9 @@
           headers: {'content-type': 'application/json;charset=UTF-8'},
           data: this.advance
         }).then(result => {
+          this.loading = false
           this.response = result.data
           console.log(this.response)
-          this.loading = false
         }, error => {
           console.error(error)
         })
@@ -168,10 +162,6 @@
         console.log(this.allPanelClose)
 //        console.log(this.baseInfo)
         this.showDetail = true
-//        const anchor = this.$refs.accountDetail
-//        $('#baseSearch').animate({scrollTop: 400})
-//        this.scrollHeight = 400
-//        console.log(document.getElementById('accountDetail').scrollHeight)
       }
     }
   }
