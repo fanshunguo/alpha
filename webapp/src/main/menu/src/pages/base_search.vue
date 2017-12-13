@@ -83,6 +83,16 @@
                      :request_body="baseInfo._source"
                      :open="!allPanelClose">
       </account-panel>
+      <br/>
+      <account-panel :buttonClass="'account-info-button'"
+                     :openTitle="'异网信息'"
+                     :closeTitle="'异网信息'"
+                     :address="'http://' + this.ip + ':' + this.port + '/business/identity/account'"
+                     :accountName="'yi_wang'"
+                     :request_body="baseInfo._source"
+                     :open="!allPanelClose">
+      </account-panel>
+      <br/>
     </account-detail>
         <!--<div id="accountDetail"></div><h4>账号详情</h4>-->
       <!--</route-view>-->

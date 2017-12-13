@@ -123,6 +123,17 @@
             new Field('updated_at', '更新日期', false),
             new Field('auth_time', '验证时间', false),
             new Field('operator_no', '操作号', false)
+          ],
+          yi_wang: [
+            new Field('global_id', 'ID', false),
+            new Field('prod_name', '产品名称', true),
+            new Field('acc_num', '手机号码', true),
+            new Field('status_name', '使用状态', true),
+            new Field('begin_rent_date', '起租时间', false),
+            new Field('act_date', '激活时间', true),
+            new Field('cust_id', '客户编号', false),
+            new Field('payment_mode_name', '付费方式', false),
+            new Field('strop_rent_date', '到期时间', true)
           ]
         },
         accHeads: [],
